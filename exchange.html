@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>currency-exchanger</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+        </style>
+    </head>
+    <body>
+        <h1>Exchanger</h1>
+        <form action="#" method="post">
+            <fieldset>
+                <legend>initialize</legend>
+                <label for="amount">Amount:
+                <input type="number" name="amount" id="amount"/></label>
+                <label for="type">Type:
+               <select  name="type" id="type" onchange="CalTips.call(this, event)">
+                
+                    <option value="y">Y</option>
+					<option value="$">$</option>
+                    <option value="u">U</option>
+                    <option value="s">S</option>
+                   
+                </select></label>
+                
+                
+            </fieldset> 
+        </form>
+<div style="overflow-x:auto;">
+  <table>
+    <tr>
+      <th>Currency</th>
+      <th>Exchange</th>
+      <th >Total</th>
+    </tr>
+	<tr>
+      <th>Saudia Arabia</th>
+      <th class="fixed">3.7</th>
+      <th class="sum"></th>
+    </tr>
+	<tr>
+      <th>USA</th>
+      <th class="fixed">1</th>
+      <th class="sum"></th>
+    </tr>
+	<tr>
+      <th>Currency</th>
+      <th class="fixed">1.5</th>
+      <th class="sum"></th>
+    </tr>
+	<tr>
+      <th>Currency</th>
+      <th class="fixed">600</th>
+      <th class="sum"></th>
+    </tr>
+   
+   
+  </table>
+</div>
+  <script>
+         var amount=document.getElementById("amount");
+         var type=document.getElementById("type");
+         var total=  document.getElementsByClassName("sum"); 
+         var fixedA= document.getElementsByClassName("fixed"); 
+			fixedA[0].innerText=400;
+		//total[0].innerText=33;
+		// var exchange=[7,7,7,7];
+		/* var exchangeU=[2.7,1.8,0.5,90];
+		 var exchangeS=[3.0,8.8,9.5,60];
+		 var exchangeA=[0.7,44.1,61.5,7000];*/
+//                 amount.value=2000;
+		//total[0].innerText=55;
+//                  for(var i=0;i<=total.length;i++)
+//                     total[i].innerText=55;
+           
+
+
+				
+			var exchange;	   
+				   
+				   exchange=[2.7,1.8,0.5,90];
+    function CalTips(event) {
+	
+	
+				if(this.options[this.selectedIndex].text==="$")
+					 exchange=[0.7,44.1,61.5,7000];
+				else if(this.options[this.selectedIndex].text==="U")
+					 exchange=[3.7,1,1.5,600];
+				else if(this.options[this.selectedIndex].text==="S")
+					 exchange=[3.0,8.8,9.5,60];
+				else if(this.options[this.selectedIndex].text==="Y")
+					 exchange=[2.7,1.8,0.5,90];
+				else
+					alert(this.options[this.selectedIndex].text);
+				
+				
+				for(i=0;i<=exchange.length;i++)
+                   fixedA[i].innerText=exchange[i];
+				   
+				   
+    if(amount && amount.value)
+		{
+		
+		for(n=0;n<=total.length;n++)
+                   total[n].innerText=amount.value*fixedA[n];
+
+                }
+				
+}
+ 
+ 
+    amount.addEventListener("input",function (  ) {  
+				   
+				   for(n=0;n<=total.length;n++)
+                   total[n].innerText=amount.value*exchange[n];
+				   
+				   });
+ 
+ 
+		  
+  </script>
+    </body>
+    
+</html>
